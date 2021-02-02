@@ -59,21 +59,22 @@ belongs_to :shipping_date
 
 ## Association
 belongs_to :item
+belongs_to :user
 has_one :mailing_address
 
 
 
 ## mailing_addresses
 
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| postal_code         | integer    | null: false                    |
-| prefecture_id       | integer    | null: false                    |
-| city                | string     | null: false                    |
-| block_number        | string     | null: false                    |
-| building_name       | string     |                                |
-| phone_number        | integer    | null: false                    |
-| purchase_history_id | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| postal_code      | string     | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| city             | string     | null: false                    |
+| block_number     | string     | null: false                    |
+| building_name    | string     |                                |
+| phone_number     | string     | null: false                    |
+| purchase_history | references | null: false, foreign_key: true |
 
 
 ## Association
