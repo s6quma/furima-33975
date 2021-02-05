@@ -58,6 +58,18 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
     end
+    it 'パスワードは、半角英語のみでは登録できないこと' do
+      @user.password = 'aabbcc'
+      @user.password_confirmation = 'aabbcc'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+    end
+    it 'パスワードは、全角では登録できないこと' do
+      @user.password = '１z２x４３３'
+      @user.password_confirmation = '１z２x４３３'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+    end
     it 'first_nameが空だと登録できない' do
       @user.first_name = nil
       @user.valid?
@@ -85,6 +97,16 @@ RSpec.describe User, type: :model do
     end
     it 'ユーザー名（フリガナ）は、全角（カタカナ）での入力が必須であること' do
       @user.last_name_kana = 'おお'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Last name kana Full-width katakana characters')
+    end
+    it 'ユーザー姓（フリガナ）は、半角文字だと登録できないこと' do
+      @user.first_name_kana = 'hiro1'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('First name kana Full-width katakana characters')
+    end
+    it 'ユーザー名（フリガナ）は、半角文字だと登録できないこと' do
+      @user.last_name_kana = 'momok0'
       @user.valid?
       expect(@user.errors.full_messages).to include('Last name kana Full-width katakana characters')
     end
