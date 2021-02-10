@@ -60,16 +60,16 @@ belongs_to :shipping_date
 ## Association
 belongs_to :item
 belongs_to :user
-has_one :mailing_address
+has_one :address
 
 
 
-## mailing_addresses
+## addresses
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | postal_code      | string     | null: false                    |
-| prefecture_id    | integer    | null: false                    |
+| prefecture       | integer    | null: false                    |
 | city             | string     | null: false                    |
 | block_number     | string     | null: false                    |
 | building_name    | string     |                                |
