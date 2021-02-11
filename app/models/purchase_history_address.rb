@@ -10,7 +10,7 @@ class PurchaseHistoryAddress
     validates :block_number
     validates :phone_number, numericality: { only_integer: true, message: 'is valid. Input half-with number' }
   end
-  validates :prefecture, numericality: { other_than: 1, message: "can't be blank"}
+  validates :prefecture, numericality: { other_than: 1 ,message: 'must be other than 1'}
 
   def save
     purchase_history = PurchaseHistory.create(user_id: user_id, item_id: item_id)
