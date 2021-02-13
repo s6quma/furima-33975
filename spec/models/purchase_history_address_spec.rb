@@ -16,6 +16,10 @@ RSpec.describe PurchaseHistoryAddress, type: :model do
         @purchase_history_address.building_name = ''
         expect(@purchase_history_address).to be_valid
       end
+      it '電話番号は11桁以内の場合のみ保存できること' do
+        @purchase_history_address.phone_number = '09000000000'
+        expect(@purchase_history_address).to be_valid
+      end
     end
     describe '購入記録と住所の保存ができないとき' do
       it 'user_idが空だと保存できないこと' do
