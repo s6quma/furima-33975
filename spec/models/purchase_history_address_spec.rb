@@ -12,6 +12,10 @@ RSpec.describe PurchaseHistoryAddress, type: :model do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@purchase_history_address).to be_valid
     end
+    it 'user_idが空だと保存できないこと' do
+    end
+    it 'item_idが空だと保存できないこと' do
+    end
     it 'tokenが空だと保存できないこと' do
       @purchase_history_address.token = ''
       @purchase_history_address.valid?
@@ -28,7 +32,7 @@ RSpec.describe PurchaseHistoryAddress, type: :model do
       expect(@purchase_history_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
     end
     it 'prefectureを選択していないと保存できないこと' do
-      @purchase_history_address.prefecture = ''
+      @purchase_history_address.prefecture = '1'
       @purchase_history_address.valid?
       expect(@purchase_history_address.errors.full_messages).to include('Prefecture must be other than 1')
     end
