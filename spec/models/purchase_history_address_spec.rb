@@ -13,8 +13,14 @@ RSpec.describe PurchaseHistoryAddress, type: :model do
       expect(@purchase_history_address).to be_valid
     end
     it 'user_idが空だと保存できないこと' do
+      @purchase_history_address.user_id = ''
+      @purchase_history_address.valid?
+      expect(@purchase_history_address.errors.full_messages).to include("User can't be blank")
     end
     it 'item_idが空だと保存できないこと' do
+      @purchase_history_address.item_id = ''
+      @purchase_history_address.valid?
+      expect(@purchase_history_address.errors.full_messages).to include("Item can't be blank")
     end
     it 'tokenが空だと保存できないこと' do
       @purchase_history_address.token = ''
