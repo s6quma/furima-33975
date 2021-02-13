@@ -6,7 +6,7 @@ RSpec.describe PurchaseHistoryAddress, type: :model do
       item = FactoryBot.create(:item)
       user = FactoryBot.create(:user)
       @purchase_history_address = FactoryBot.build(:purchase_history_address, user_id: user.id, item_id: item.id)
-      sleep(0.5)
+      sleep(0.6)
     end
     describe '購入記録と住所の保存ができるとき' do
       it 'すべての値が正しく入力されていれば保存できること' do
