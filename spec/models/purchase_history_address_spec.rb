@@ -12,6 +12,11 @@ RSpec.describe PurchaseHistoryAddress, type: :model do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@purchase_history_address).to be_valid
     end
+    it 'tokenが空だと保存できないこと' do
+      @purchase_history_address.token = ""
+      @purchase_history_address.valid?
+      expect(@purchase_history_address.errors.full_messages).to include("Token can't be blank")
+    end
     it 'postal_codeが空だと保存できないこと' do
       @purchase_history_address.postal_code = ""
       @purchase_history_address.valid?
